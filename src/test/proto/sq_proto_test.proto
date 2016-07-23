@@ -1,0 +1,39 @@
+package p4p.util;
+
+option java_package = "org.ij.p4p.util";
+option java_outer_classname = "SqProtoTestProto";
+option java_multiple_files = true;
+
+message GroceryStore {
+  repeated Produce fresh_produce = 1;
+  repeated Produce frozen_produce = 2;
+}
+
+message VendorData {
+  optional string name = 1;
+}
+
+message Produce {
+  enum Type {
+    UNKNOWN = 0;
+    APPLE = 1;
+    ORANGE = 2;
+    BROCCOLI = 3;
+    CARROTS = 4;
+  }
+
+  optional int64 produce_id = 1;
+  optional Type type = 2;
+  optional string description = 3;
+  optional double retail_price = 4;
+  optional float wholesale_cost = 5;
+  optional int32 expiration_days = 6;
+  optional bool is_organic = 7;
+  optional bytes vendor_data = 8;
+}
+
+message MarginCalculation {
+  optional int64 produce_id = 1;
+  optional int32 margin_cents = 2;
+  optional double profit_margin = 3;
+}

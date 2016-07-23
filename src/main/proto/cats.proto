@@ -1,0 +1,281 @@
+package p4p.cats;
+
+option java_package = "org.ij.p4p.cats";
+option java_outer_classname = "CatsProto";
+option java_multiple_files = true;
+
+message ParseIssue {
+  enum Type {
+    UNKNOWN = 0;
+    INCONSISTENT_RECORD = 1;
+    INVALID_FIELD_VALUE = 2;
+    BATCH_RECORDS = 3;
+  }
+
+  optional Type type = 1;
+  optional uint32 table_id = 2;
+  optional uint64 record_id = 3;
+  optional uint32 field_id = 4;
+  optional string field_value = 5;
+  optional uint32 field_count = 6;
+  optional uint32 record_count = 7;
+}
+
+// Schema for the CATS database in text format.
+message CatsRawSnapshot {
+  repeated RawAsset ASSET_T = 1;
+  repeated RawDag71 DAG71_T = 2;
+}
+
+// Schema for the CATS database in converted format.
+message CatsSnapshot {
+  repeated AssetRecord asset = 1;
+  repeated EquitableSharingRecord equitable_sharing = 2;
+}
+
+// Schema for the ASSET_T table in text format.
+message RawAsset {
+  optional string ASSET_ID = 1;
+  optional string UPDT_TMSTMP = 2;
+  optional string ACTN_COMPL_DT1 = 3;
+  optional string ACTN_COMPL_DT2 = 4;
+  optional string ADD_AGCY = 5;
+  optional string ADPT_DT = 6;
+  optional string AD_CD_PREV1 = 7;
+  optional string AD_CD_PREV2 = 8;
+  optional string AD_CD_PRIM_DEA = 9;
+  optional string APRSD_DT = 10;
+  optional string APRVL_DT = 11;
+  optional string ASSET_CBND_FLG = 12;
+  optional string ASSET_DSPN_DT = 13;
+  optional string ASSET_HNDL_TYP1 = 14;
+  optional string ASSET_HNDL_TYP2 = 15;
+  optional string ASSET_HNDL_TYP3 = 16;
+  optional string ASSET_ID_TYP = 17;
+  optional string ASSET_PUB_DT = 18;
+  optional string ASSET_SUBTYP = 19;
+  optional string ASSET_THRLD_FLG = 20;
+  optional string ASSET_TYP = 21;
+  optional string ASSET_VAL = 22;
+  optional string ASSET_VAL_AT_SZ = 23;
+  optional string CA_TYP = 24;
+  optional string CRMNL_INDCT_DT = 25;
+  optional string CTRY_CD = 26;
+  optional string DMGE_PRESNT_FLG = 27;
+  optional string ET_FLG = 28;
+  optional string EXPED_NOT_SVD = 29;
+  optional string EXP_INCUR = 30;
+  optional string FIRE_BEGN_DT = 31;
+  optional string FIRE_END_DT = 32;
+  optional string FIRE_TYP = 33;
+  optional string FM_PREP_DT = 34;
+  optional string FO_TYP = 35;
+  optional string FO_TYP_PREV1 = 36;
+  optional string FO_TYP_PREV2 = 37;
+  optional string GOV_PRIVT_CD = 38;
+  optional string INTRA_AGCY_ASST = 39;
+  optional string ITM_AGCY_CD = 40;
+  optional string LIEN_EXISTS = 41;
+  optional string OCDETF_CA_FLG = 42;
+  optional string OFC_ID = 43;
+  optional string ORD_FO_RCPT_DT = 44;
+  optional string PARA_PROC_FLG = 45;
+  optional string PROC_DIST = 46;
+  optional string PTY_EXISTS_FLG = 47;
+  optional string QK_RLS_IND = 48;
+  optional string SHR_PRESNT_FLG = 49;
+  optional string STAT_PRIM = 50;
+  optional string STAT_VIOL_CD = 51;
+  optional string SUB_OFC_ID = 52;
+  optional string SZ_AGCY_CD = 53;
+  optional string SZ_DIST = 54;
+  optional string SZ_DT = 55;
+  optional string SZ_FM_ENT_DT = 56;
+  optional string SZ_METH = 57;
+  optional string SZ_DT_JUD = 58;
+  optional string SZ_JUD_SUB_OFC = 59;
+  optional string SZ_ST = 60;
+  optional string SZD_FRM_BUSFLG = 61;
+  optional string TRO_DT = 62;
+  optional string TRO_EXPIR_DT = 63;
+  optional string VCTMS_ANTCPTD_F = 64;
+  optional string CA_ENT_DT = 65;
+  optional string PST_WLK_DT = 66;
+  optional string INTL_SHR_FLG = 67;
+  optional string SZ_FM_CMPLTN_DT = 68;
+  optional string PGM_YR = 69;
+  optional string ASSET_VAL_FIRE = 70;
+  optional string RSTN_ANT_FLG = 71;
+  optional string AD_CD_DEA_2035 = 72;
+  optional string CMPLX_ASSET_FLG = 73;
+  optional string CAU_RVW_DT = 74;
+}
+
+// Schema for the DAG71_T table in text format.
+message RawDag71 {
+  optional string ASSET_ID = 1;
+  optional string OAG_NCIC_CD = 2;
+  optional string UPDT_TMSTMP = 3;
+  optional string APRVL_DT = 4;
+  optional string FORGN_ASSET_FLG = 5;
+  optional string LGL_CSL_CERT_DT = 6;
+  optional string LGL_CSL_ST = 7;
+  optional string SHR_ASST_FLG = 8;
+  optional string SHR_CONTRIB_HRS = 9;
+  optional string SHR_EXEC_DT = 10;
+  optional string SHR_EXEC_STS_CD = 11;
+  optional string SHR_FED_AMT = 12;
+  optional string SHR_IA_EXP = 13;
+  optional string SHR_INFO_ORIGR = 14;
+  optional string SHR_OTH_ASSET = 15;
+  optional string SHR_OTSDNG_LIEN = 16;
+  optional string SHR_PCT_TO_SHR = 17;
+  optional string SHR_REQ_DT = 18;
+  optional string SHR_REQ_PCT = 19;
+  optional string SHR_REQ_RECV_DT = 20;
+  optional string SHR_REQ_TYP = 21;
+  optional string SHR_ST_SZ_ASSET = 22;
+  optional string SHR_TL_INCM = 23;
+  optional string SHR_TYP = 24;
+  optional string SHR_USA_EXP = 25;
+  optional string SHR_USE_EQUIP = 26;
+  optional string SHR_USE_OFCL = 27;
+  optional string SHR_USE_OTHER = 28;
+  optional string SHR_USE_SAL = 29;
+  optional string SHR_USE_VEHCL = 30;
+  optional string SHR_USMS_EXP = 31;
+  optional string SHR_XTRORD_EXP = 32;
+  optional string SOC_CD = 33;
+  optional string SHR_PRE_APPRVD_AMT = 34;
+  optional string SHR_USMS_LIEN_EXP = 35;
+  optional string SHR_EXEC_ENT_DT = 36;
+  optional string SHR_EXEC_AMT = 37;
+  optional string FUNDS_LOC_CD = 38;
+  optional string OFFST_AMT = 39;
+  optional string BUDGT_ADJ_PCT = 40;
+  optional string BUDGT_ADJ_VAL = 41;
+}
+
+// Schema for the ASSET_T table with data types and readable names.
+message AssetRecord {
+  optional uint32 asset_id = 1;
+  optional string update_timestamp = 2;
+  optional string action_complete_date1 = 3;
+  optional string action_complete_date2 = 4;
+  optional bool additional_agencies_flag = 5;
+  optional string federal_adoption_date = 6;
+  optional uint32 advertisement_code_prev1 = 7;
+  optional uint32 advertisement_code_prev2 = 8;
+  optional string dea_advertisement_code = 9;
+  optional string appraisal_date = 10;
+  optional string approval_date = 11;
+  optional bool combined_asset_flag = 12;
+  optional string disposal_date = 13;
+  optional string special_handling_code1 = 14;
+  optional string special_handling_code2 = 15;
+  optional string special_handling_code3 = 16;
+  optional string asset_id_type = 17;
+  optional string advertisement_publication_date = 18;
+  optional string asset_subtype_code = 19;
+  optional bool value_threshold_flag = 20;
+  optional string asset_type = 21;
+  optional double asset_value = 22;
+  optional double asset_value_at_seizure = 23;
+  optional string case_type_code = 24;
+  optional string criminal_indictment_date = 25;
+  optional string country_code = 26;
+  optional bool damages_present_at_seizure = 27;
+  optional bool sad_electronic_transfer_flag = 28;
+  optional bool expedited_release_notice_served = 29;
+  optional bool expenses_incurred_flag = 30;
+  // FIRE = frozen, indicted, restrained or encumbered.
+  optional string fire_begin_date = 31;
+  optional string fire_end_date = 32;
+  optional string fire_type = 33;
+  optional string form_preparation_date = 34;
+  optional string forfeiture_type = 35;
+  optional string forfeiture_type_prev1 = 36;
+  optional string forfeiture_type_prev2 = 37;
+  optional string government_private_code = 38;
+  optional bool intra_agency_assistance_flag = 39;
+  optional string item_recording_agency_code = 40;
+  optional bool lien_exists_flag = 41;
+  optional bool organized_crime_case_flag = 42;
+  optional string office_id = 43;
+  optional string forfeiture_order_receipt_date = 44;
+  optional bool parallel_processing_flag = 45;
+  optional string processing_district = 46;
+  optional bool party_exists_flag = 47;
+  optional bool quick_release_flag = 48;
+  optional bool sharing_present_flag = 49;
+  optional string primary_statute_code = 50;
+  optional string statute_violation_code = 51;
+  optional string sub_office_id = 52;
+  optional string seizing_agency_code = 53;
+  optional string seizure_district = 54;
+  optional string seizure_date = 55;
+  optional string seizure_form_entry_date = 56;
+  optional string seizure_method_code = 57;
+  optional string judicial_seizure_date = 58;
+  optional string seizing_judicial_sub_office = 59;
+  optional string seizure_state = 60;
+  optional bool seized_from_business_flag = 61;
+  optional string temp_restraining_order_date = 62;
+  optional string restraining_order_expiration_date = 63;
+  optional bool victims_anticipated_flag = 64;
+  optional string case_entered_date = 65;
+  optional string real_property_summons_date = 66;
+  optional bool international_sharing_flag = 67;
+  optional string seizure_form_completion_date = 68;
+  optional string fbi_icc_program_year = 69;
+  optional double asset_value_at_fire_begin = 70;
+  optional bool restitution_anticipated_flag = 71;
+  optional string dea_20_35_day_ad_code = 72;
+  optional bool complex_asset_flag = 73;
+  optional string complex_asset_review_date = 74;
+}
+
+// Schema for the DAG71_T with data types and readable names.
+message EquitableSharingRecord {
+  optional uint32 asset_id = 1;
+  optional string other_agency_ncic_code = 2;
+  optional string update_timestamp = 3;
+  optional string approval_date = 4;
+  optional bool foreign_asset_flag = 5;
+  optional string legal_counsel_certification_date = 6;
+  optional string legal_counsel_state = 7;
+  optional bool unique_assistance_flag = 8;
+  optional uint32 contributed_hours = 9;
+  optional string sharing_execution_date = 10;
+  optional string sharing_execution_status_code = 11;
+  optional double federal_sharing_amount = 12;
+  optional double investigative_agency_expense = 13;
+  optional bool information_origin_flag = 14;
+  optional bool other_assets_flag = 15;
+  optional double outstanding_lien_amount = 16;
+  optional double percent_to_share = 17;
+  optional string sharing_request_date = 18;
+  optional double sharing_request_percent = 19;
+  optional string request_received_date = 20;
+  optional string sharing_request_type = 21;
+  optional bool state_law_seized_asset_flag = 22;
+  optional double income_available_for_sharing = 23;
+  optional string sharing_type = 24;
+  optional double sharing_usa_expenses = 25;
+  optional bool equipment_purchase_use_flag = 26;
+  optional bool official_use_flag = 27;
+  optional bool other_use_flag = 28;
+  optional bool salaries_use_flag = 29;
+  optional bool vehicle_purchase_use_flag = 30;
+  optional double sharing_usms_expenses = 31;
+  optional bool extraordinary_expenses_flag = 32;
+  optional string sub_object_classification_code = 33;
+  optional double international_preapproved_amount = 34;
+  optional double usms_lien_expenses_amount = 35;
+  optional string date_memo_entered = 36;
+  optional double sharing_execution_amount = 37;
+  optional string funds_location_code = 38;
+  optional double offset_or_payment_amount = 39;
+  optional double budgetary_adjustment_percent = 40;
+  optional double budgetary_adjustment_value = 41;
+}

@@ -1,0 +1,49 @@
+package p4p.util;
+
+option java_package = "org.ij.p4p.util";
+option java_outer_classname = "SQLiteProto";
+option java_multiple_files = true;
+
+message SqSchema {
+  repeated SqDatabase database = 1;
+}
+
+message SqDatabase {
+  optional uint32 seq_no = 1;
+  optional string database_name = 2;
+  optional string database_path = 3;
+  repeated SqTable table = 4;
+  repeated SqIndex index = 5;
+  repeated SqObject object = 6;
+}
+
+message SqTable {
+  optional string table_name = 1;
+  repeated SqColumn column = 2;
+}
+
+message SqIndex {
+  optional string index_name = 1;
+  optional string table_name = 2;
+  repeated string column = 3;
+}
+
+// See sqlite_master at https://www.sqlite.org/fileformat.html
+message SqObject {
+  optional string object_type = 1;
+  optional string object_name = 2;
+  optional string associated_table = 3;
+  optional uint64 root_page = 4;
+  optional string sql_text = 5;
+  repeated SqColumn column = 6;
+}
+
+// See http://www.sqlite.org/pragma.html#pragma_table_info
+message SqColumn {
+  optional uint32 column_id = 1;
+  optional string column_name = 2;
+  optional string data_type = 3;
+  optional bool nullable = 4;
+  optional string default_value = 5;
+  optional uint32 pk_index = 6;
+}

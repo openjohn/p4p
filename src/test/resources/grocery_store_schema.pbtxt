@@ -1,0 +1,112 @@
+database {
+  seq_no: 0
+  database_name: "main"
+  database_path: ""
+  table {
+    table_name: "fresh_produce"
+    column {
+      column_id: 1
+      column_name: "produce_id"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 2
+      column_name: "type"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 3
+      column_name: "description"
+      data_type: "string"
+      nullable: true
+    }
+    column {
+      column_id: 4
+      column_name: "retail_price"
+      data_type: "double"
+      nullable: true
+    }
+    column {
+      column_id: 5
+      column_name: "wholesale_cost"
+      data_type: "float"
+      nullable: true
+    }
+    column {
+      column_id: 6
+      column_name: "expiration_days"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 7
+      column_name: "is_organic"
+      data_type: "boolean"
+      nullable: true
+    }
+    column {
+      column_id: 8
+      column_name: "vendor_data"
+      data_type: "blob"
+      nullable: true
+    }
+  }
+  table {
+    table_name: "frozen_produce"
+    column {
+      column_id: 1
+      column_name: "produce_id"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 2
+      column_name: "type"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 3
+      column_name: "description"
+      data_type: "string"
+      nullable: true
+    }
+    column {
+      column_id: 4
+      column_name: "retail_price"
+      data_type: "double"
+      nullable: true
+    }
+    column {
+      column_id: 5
+      column_name: "wholesale_cost"
+      data_type: "float"
+      nullable: true
+    }
+    column {
+      column_id: 6
+      column_name: "expiration_days"
+      data_type: "int"
+      nullable: true
+    }
+    column {
+      column_id: 7
+      column_name: "is_organic"
+      data_type: "boolean"
+      nullable: true
+    }
+    column {
+      column_id: 8
+      column_name: "vendor_data"
+      data_type: "blob"
+      nullable: true
+    }
+  }
+  index {
+    index_name: "fresh_produce_id"
+    table_name: "fresh_produce"
+    column: "produce_id"
+  }
+}
