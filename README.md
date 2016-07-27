@@ -38,10 +38,10 @@ We require R version 3.1 or above. I needed to [upgrade from v3.0](http://stacko
 ## Get the Data
 The CATS data comes from the Department of Justice via FOIA request.
 
-There is a version of the data from March 2016 [available as a ZIP archive](https://drive.google.com/file/d/0BzVokAd-QgH6RHpnM2pSQU1vYWc/view?usp=sharing). The archive contains CSV files named according to tables from the database extract:
+There is a version of the data from June 2014 [available as a ZIP archive](https://drive.google.com/file/d/0BzVokAd-QgH6RHpnM2pSQU1vYWc/view?usp=sharing). The archive contains CSV files named according to tables from the database extract:
 
 ```
-$ unzip -l ij_cats_data_20160315.zip
+$ unzip -l cats_data_201406.zip
 
   Length      Date    Time    Name
 ---------  ---------- -----   ----
@@ -84,8 +84,8 @@ The CATS parser reads the data from the ZIP archive and exports to a SQLite3 dat
 ```bash
 $ java -cp target/p4p-0.2-SNAPSHOT-jar-with-dependencies.jar \
     org.ij.p4p.cats.CatsParser \
-    ij_cats_data_20160315.zip \
-    cats_20160315.db
+    cats_data_201406.zip \
+    cats_201406.db
 ```
 
 The import produces some parse information:
@@ -114,7 +114,7 @@ $ wc --lines ASSET_T.txt DAG71_T.txt
 ## Open the SQLite Database
 Now we can explore the data using an SQL interface:
 
-`$ sqlite3 cats_20160315.db`
+`$ sqlite3 cats_201406.db`
 
 If you're new to the SQLite command line interface, try the help command:
 
@@ -223,7 +223,7 @@ Open the SQLite database from R:
 ```
 > library("RSQLite")
 Loading required package: DBI
-> con = dbConnect(RSQLite::SQLite(), "cats_20160315.db")
+> con = dbConnect(RSQLite::SQLite(), "cats_201406.db")
 > dbListTables(con)
 [1] "asset"            "equitable_sharing"
 ```
