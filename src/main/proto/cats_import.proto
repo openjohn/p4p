@@ -1,0 +1,155 @@
+package p4p.cats;
+
+option java_package = "org.ij.p4p.cats";
+option java_outer_classname = "CatsImportProto";
+option java_multiple_files = true;
+
+message ParseIssue {
+  enum Type {
+    UNKNOWN = 0;
+    INCONSISTENT_RECORD = 1;
+    INVALID_FIELD_VALUE = 2;
+    // Used to count batches of parsed records.
+    BATCH_RECORDS = 3;
+  }
+
+  optional Type type = 1;
+  optional uint32 table_id = 2;
+  optional uint64 record_id = 3;
+  optional uint32 field_id = 4;
+  optional string field_value = 5;
+  optional uint32 field_count = 6;
+  optional uint32 record_count = 7;
+}
+
+// Schema for the CATS database in text format.
+// Field names correspond to the file names of the CSV data.
+message CatsRawSnapshot {
+  repeated RawAsset ASSET_T = 1;
+  repeated RawDag71 DAG71_T = 2;
+}
+
+// Schema for the ASSET_T table in text format.
+// Field names correspond to the column names in the CSV data.
+message RawAsset {
+  optional string ASSET_ID = 1;
+  optional string UPDT_TMSTMP = 2;
+  optional string ACTN_COMPL_DT1 = 3;
+  optional string ACTN_COMPL_DT2 = 4;
+  optional string ADD_AGCY = 5;
+  optional string ADPT_DT = 6;
+  optional string AD_CD_PREV1 = 7;
+  optional string AD_CD_PREV2 = 8;
+  optional string AD_CD_PRIM_DEA = 9;
+  optional string APRSD_DT = 10;
+  optional string APRVL_DT = 11;
+  optional string ASSET_CBND_FLG = 12;
+  optional string ASSET_DSPN_DT = 13;
+  optional string ASSET_HNDL_TYP1 = 14;
+  optional string ASSET_HNDL_TYP2 = 15;
+  optional string ASSET_HNDL_TYP3 = 16;
+  optional string ASSET_ID_TYP = 17;
+  optional string ASSET_PUB_DT = 18;
+  optional string ASSET_SUBTYP = 19;
+  optional string ASSET_THRLD_FLG = 20;
+  optional string ASSET_TYP = 21;
+  optional string ASSET_VAL = 22;
+  optional string ASSET_VAL_AT_SZ = 23;
+  optional string CA_TYP = 24;
+  optional string CRMNL_INDCT_DT = 25;
+  optional string CTRY_CD = 26;
+  optional string DMGE_PRESNT_FLG = 27;
+  optional string ET_FLG = 28;
+  optional string EXPED_NOT_SVD = 29;
+  optional string EXP_INCUR = 30;
+  optional string FIRE_BEGN_DT = 31;
+  optional string FIRE_END_DT = 32;
+  optional string FIRE_TYP = 33;
+  optional string FM_PREP_DT = 34;
+  optional string FO_TYP = 35;
+  optional string FO_TYP_PREV1 = 36;
+  optional string FO_TYP_PREV2 = 37;
+  optional string GOV_PRIVT_CD = 38;
+  optional string INTRA_AGCY_ASST = 39;
+  optional string ITM_AGCY_CD = 40;
+  optional string LIEN_EXISTS = 41;
+  optional string OCDETF_CA_FLG = 42;
+  optional string OFC_ID = 43;
+  optional string ORD_FO_RCPT_DT = 44;
+  optional string PARA_PROC_FLG = 45;
+  optional string PROC_DIST = 46;
+  optional string PTY_EXISTS_FLG = 47;
+  optional string QK_RLS_IND = 48;
+  optional string SHR_PRESNT_FLG = 49;
+  optional string STAT_PRIM = 50;
+  optional string STAT_VIOL_CD = 51;
+  optional string SUB_OFC_ID = 52;
+  optional string SZ_AGCY_CD = 53;
+  optional string SZ_DIST = 54;
+  optional string SZ_DT = 55;
+  optional string SZ_FM_ENT_DT = 56;
+  optional string SZ_METH = 57;
+  optional string SZ_DT_JUD = 58;
+  optional string SZ_JUD_SUB_OFC = 59;
+  optional string SZ_ST = 60;
+  optional string SZD_FRM_BUSFLG = 61;
+  optional string TRO_DT = 62;
+  optional string TRO_EXPIR_DT = 63;
+  optional string VCTMS_ANTCPTD_F = 64;
+  optional string CA_ENT_DT = 65;
+  optional string PST_WLK_DT = 66;
+  optional string INTL_SHR_FLG = 67;
+  optional string SZ_FM_CMPLTN_DT = 68;
+  optional string PGM_YR = 69;
+  optional string ASSET_VAL_FIRE = 70;
+  optional string RSTN_ANT_FLG = 71;
+  optional string AD_CD_DEA_2035 = 72;
+  optional string CMPLX_ASSET_FLG = 73;
+  optional string CAU_RVW_DT = 74;
+}
+
+// Schema for the DAG71_T table in text format.
+// Field names correspond to the column names in the CSV data.
+message RawDag71 {
+  optional string ASSET_ID = 1;
+  optional string OAG_NCIC_CD = 2;
+  optional string UPDT_TMSTMP = 3;
+  optional string APRVL_DT = 4;
+  optional string FORGN_ASSET_FLG = 5;
+  optional string LGL_CSL_CERT_DT = 6;
+  optional string LGL_CSL_ST = 7;
+  optional string SHR_ASST_FLG = 8;
+  optional string SHR_CONTRIB_HRS = 9;
+  optional string SHR_EXEC_DT = 10;
+  optional string SHR_EXEC_STS_CD = 11;
+  optional string SHR_FED_AMT = 12;
+  optional string SHR_IA_EXP = 13;
+  optional string SHR_INFO_ORIGR = 14;
+  optional string SHR_OTH_ASSET = 15;
+  optional string SHR_OTSDNG_LIEN = 16;
+  optional string SHR_PCT_TO_SHR = 17;
+  optional string SHR_REQ_DT = 18;
+  optional string SHR_REQ_PCT = 19;
+  optional string SHR_REQ_RECV_DT = 20;
+  optional string SHR_REQ_TYP = 21;
+  optional string SHR_ST_SZ_ASSET = 22;
+  optional string SHR_TL_INCM = 23;
+  optional string SHR_TYP = 24;
+  optional string SHR_USA_EXP = 25;
+  optional string SHR_USE_EQUIP = 26;
+  optional string SHR_USE_OFCL = 27;
+  optional string SHR_USE_OTHER = 28;
+  optional string SHR_USE_SAL = 29;
+  optional string SHR_USE_VEHCL = 30;
+  optional string SHR_USMS_EXP = 31;
+  optional string SHR_XTRORD_EXP = 32;
+  optional string SOC_CD = 33;
+  optional string SHR_PRE_APPRVD_AMT = 34;
+  optional string SHR_USMS_LIEN_EXP = 35;
+  optional string SHR_EXEC_ENT_DT = 36;
+  optional string SHR_EXEC_AMT = 37;
+  optional string FUNDS_LOC_CD = 38;
+  optional string OFFST_AMT = 39;
+  optional string BUDGT_ADJ_PCT = 40;
+  optional string BUDGT_ADJ_VAL = 41;
+}

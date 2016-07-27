@@ -58,7 +58,7 @@ $ unzip -l cats_data_201406.zip
 
 The zipped data weighs in at 450 MB (with an 85% compression ratio).
 
-The [database schema](https://drive.google.com/file/d/0BzVokAd-QgH6VkltN0JvbTZhaEU/view?usp=sharing) is available in PDF format.
+The [database schema](https://drive.google.com/file/d/0BzVokAd-QgH6VkltN0JvbTZhaEU/view?usp=sharing) is available in PDF format. This corresponds to the [CatsRawSnapshot proto](src/main/proto/cats_import.proto) in the source code.
 
 ## Get the Code
 Clone the git repository to your development machine:
@@ -110,6 +110,8 @@ $ wc --lines ASSET_T.txt DAG71_T.txt
    743753 ASSET_T.txt
    700814 DAG71_T.txt
 ```
+
+The SQLite database schema corresponds to the [CatsSnapshot proto](src/main/proto/cats.proto) in the source code.
 
 ## Open the SQLite Database
 Now we can explore the data using an SQL interface:
